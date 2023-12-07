@@ -360,6 +360,7 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
     if let Ok(video) = codec.decoder().video() {
         #[allow(non_snake_case)]
         let pixelFormat: Option<String> = match video.format()  {
+            remotionffmpeg::format::Pixel::None => Some("unknown".to_string()),
             remotionffmpeg::format::Pixel::YUV420P => Some("yuv420p".to_string()),
             remotionffmpeg::format::Pixel::YUYV422 => Some("yuyv422".to_string()),
             remotionffmpeg::format::Pixel::RGB24 => Some("rgb24".to_string()),
@@ -643,7 +644,6 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
             remotionffmpeg::format::Pixel::P412LE => Some("p412le".to_string()),
             remotionffmpeg::format::Pixel::GBRAP14BE => Some("gbrap14be".to_string()),
             remotionffmpeg::format::Pixel::GBRAP14LE => Some("gbrap14le".to_string()),
-            remotionffmpeg::format::Pixel::None => None,
         };
         
         // Return the video metadata

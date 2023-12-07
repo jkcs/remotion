@@ -91,6 +91,7 @@ export type VideoMetadata = {
 	audioFileExtension: string | null;
 	pixelFormat:
 		| null
+		| 'unknown'
 		| 'yuv420p'
 		| 'yuyv422'
 		| 'rgb24'
