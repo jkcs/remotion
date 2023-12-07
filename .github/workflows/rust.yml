@@ -15,11 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      with:
+        node-version: 16
     - uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: "packages/renderer -> target"
+      with:
+        workspaces: "packages/renderer -> target"
     - name: Install
       run: pnpm install --frozen-lockfile
     - name: Build
