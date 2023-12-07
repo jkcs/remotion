@@ -371,7 +371,7 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
             audioCodec: audio_codec_name,
             audioFileExtension: audio_file_extension,
             pixelFormat: match video.format()  {
-                Some(format) => Some(format.to_string()),
+                remotionffmpeg::format::video::Pixel::YUV420P => Some("yuv420p".to_string()),
                 None => None,
             },
         };
