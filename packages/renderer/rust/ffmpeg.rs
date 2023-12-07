@@ -643,6 +643,7 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
             remotionffmpeg::format::Pixel::P412LE => Some("p412le".to_string()),
             remotionffmpeg::format::Pixel::GBRAP14BE => Some("gbrap14be".to_string()),
             remotionffmpeg::format::Pixel::GBRAP14LE => Some("gbrap14le".to_string()),
+            remotionffmpeg::format::Pixel::None => None,
         };
         
         // Return the video metadata
