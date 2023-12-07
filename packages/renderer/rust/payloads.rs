@@ -227,6 +227,7 @@ pub mod payloads {
         pub colorSpace: KnownColorSpaces,
         pub audioCodec: Option<KnownAudioCodecs>,
         pub audioFileExtension: Option<String>,
+        pub pixelFormat: format::Pixel,
     }
 
     #[derive(Serialize, Deserialize, Debug)]

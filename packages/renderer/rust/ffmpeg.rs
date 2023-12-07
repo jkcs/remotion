@@ -370,6 +370,10 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
             colorSpace,
             audioCodec: audio_codec_name,
             audioFileExtension: audio_file_extension,
+            pixelFormat: match video.format()  {
+                Some(format) => Some(format.to_string()),
+                None => None,
+            },
         };
         Ok(metadata)
     } else {
