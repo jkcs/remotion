@@ -358,6 +358,12 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
     };
 
     if let Ok(video) = codec.decoder().video() {
+        #[allow(non_snake_case)]
+        let pixelFormat = match video.format()  {
+            remotionffmpeg::format::Pixel::YUV420P => Some("yuv420p".to_string()),
+            None => None,
+        };
+        
         // Return the video metadata
         let metadata = VideoMetadata {
             fps,
@@ -370,10 +376,7 @@ pub fn get_video_metadata(file_path: &str) -> Result<VideoMetadata, ErrorWithBac
             colorSpace,
             audioCodec: audio_codec_name,
             audioFileExtension: audio_file_extension,
-            pixelFormat: match video.format()  {
-                remotionffmpeg::format::video::Pixel::YUV420P => Some("yuv420p".to_string()),
-                None => None,
-            },
+            pixelFormat,
         };
         Ok(metadata)
     } else {
